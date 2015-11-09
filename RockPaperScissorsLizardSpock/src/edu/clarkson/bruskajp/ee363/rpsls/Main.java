@@ -8,6 +8,7 @@ import edu.clarkson.bruskajp.ee363.rpsls.display.Displayer;
 import edu.clarkson.bruskajp.ee363.rpsls.display.PlayerSubscriberDecorator;
 import edu.clarkson.bruskajp.ee363.rpsls.gestures.Gesture;
 import edu.clarkson.bruskajp.ee363.rpsls.gestures.righthandgestures.*;
+import edu.clarkson.bruskajp.ee363.rpsls.jUnitTests.TwoPlayerCombinations;
 import edu.clarkson.bruskajp.ee363.rpsls.gestures.lefthandgestures.*;
 import edu.clarkson.bruskajp.ee363.rpsls.player.ComputerPlayer;
 import edu.clarkson.bruskajp.ee363.rpsls.player.HumanPlayer;
@@ -34,6 +35,10 @@ public class Main {
 		
 		rightHandGestures[2] = new Rock();
 		leftHandGestures[2] = new Radioactive();
+		
+		
+		TwoPlayerCombinations test = new TwoPlayerCombinations();
+		test.test();
 		
 		
 		
