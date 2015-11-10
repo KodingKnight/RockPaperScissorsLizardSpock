@@ -20,6 +20,11 @@ import edu.clarkson.bruskajp.ee363.rpsls.scoring.Scoring;
 
 public class Main {
 
+	/**
+	   * This code implements the Liskov Substitution Principle and the Open Closed Principle.
+	   * It could be designed better to make it more dynamic from the command line, 
+	   * though things can currently be changed within main.
+	 */
 	
 	/**
 	   * Starts the program and controls how the rest of the

@@ -5,6 +5,10 @@ import edu.clarkson.bruskajp.ee363.rpsls.player.Player;
 
 public class PlayerSubscriberDisplayerDecorator implements PlayerSubscriber, Displayer<Player>{
 	
+	/**
+	   * This is a decorator for the Displayer so that any type of displayer can be dynamically implemented
+	 */
+	
 	private Displayer<Player> nestedDisplayer;
 	
 	/**

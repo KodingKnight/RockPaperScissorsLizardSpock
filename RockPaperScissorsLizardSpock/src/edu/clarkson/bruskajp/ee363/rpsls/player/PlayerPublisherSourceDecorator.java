@@ -10,6 +10,10 @@ import edu.clarkson.bruskajp.ee363.rpsls.PlayerSubscriber;
 
 public class PlayerPublisherSourceDecorator implements PlayerSource, PlayerPublisher{
 	
+	/**
+	   * This is a decorator for the Source so that any type of player source can be dynamically implemented
+	 */
+	
 	private PlayerSource wrappedPlayerSource;
 	private List<PlayerSubscriber> subscribers = new ArrayList<>();
 	

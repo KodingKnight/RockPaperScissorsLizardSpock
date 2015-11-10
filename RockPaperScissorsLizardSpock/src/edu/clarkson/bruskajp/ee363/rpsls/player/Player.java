@@ -5,6 +5,10 @@ import edu.clarkson.bruskajp.ee363.rpsls.gestures.RightHandGesture;
 
 public class Player {
 	
+	/**
+	   * This is to provide a base class to other player types. It is normal inheritance.
+	 */
+	
 	RightHandGesture rightHandGesture;
 	LeftHandGesture leftHandGesture;
 	
