@@ -45,12 +45,6 @@ public class Main {
 		players[2] = computer3;
 		players[3] = computer4;
 		
-		System.out.println(players[0]);
-		System.out.println(players[1]);
-		System.out.println(players[2]);
-		System.out.println(players[3]);
-		System.out.println('\n');
-		
 		int[] winningPlayers = gestureScoring.selectWinner(players);
 		HashSet<Player> winningPlayersSet = new HashSet<>();
 		if(winningPlayers != null){
