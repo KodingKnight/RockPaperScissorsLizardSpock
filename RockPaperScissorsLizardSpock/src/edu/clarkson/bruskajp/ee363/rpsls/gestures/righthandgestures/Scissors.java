@@ -5,11 +5,19 @@ import edu.clarkson.bruskajp.ee363.rpsls.gestures.RightHandGesture;
 
 public class Scissors extends RightHandGesture {
 
+	/**
+	   * Returns a description of the class as a sting 
+	*/ 
 	@Override
 	public String getGestureType() {
 		return "Scissors";
 	}
 
+	/**
+	   * Compares a gesture to itself to see who loses. 
+	   * @param objectArray A Gesture to be compared to the this object.
+	   * @return An int to describe if this object won, tied or lost.
+	*/ 
 	@Override
 	public int compareGestures(Gesture gesture) {
 		

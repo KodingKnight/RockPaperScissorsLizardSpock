@@ -21,6 +21,11 @@ public class Player {
 		this.leftHandGesture = leftHandGesture;
 	}
 	
+	
+	/**
+	   * Converts the object to a String 
+	   * @return A String describing the object.
+	*/ 
 	@Override
 	public String toString() {
 		return rightHandGesture.getGestureType() + " and " + leftHandGesture.getGestureType() + " wins";

@@ -5,28 +5,50 @@ import java.util.Set;
 
 import edu.clarkson.bruskajp.ee363.rpsls.display.CommandLineDisplayer;
 import edu.clarkson.bruskajp.ee363.rpsls.display.Displayer;
-import edu.clarkson.bruskajp.ee363.rpsls.display.PlayerSubscriberDecorator;
+import edu.clarkson.bruskajp.ee363.rpsls.display.PlayerSubscriberDisplayerDecorator;
 import edu.clarkson.bruskajp.ee363.rpsls.gestures.Gesture;
 import edu.clarkson.bruskajp.ee363.rpsls.gestures.righthandgestures.*;
 import edu.clarkson.bruskajp.ee363.rpsls.jUnitTests.TwoPlayerCombinations;
 import edu.clarkson.bruskajp.ee363.rpsls.gestures.lefthandgestures.*;
 import edu.clarkson.bruskajp.ee363.rpsls.player.ComputerPlayer;
 import edu.clarkson.bruskajp.ee363.rpsls.player.HumanPlayer;
+import edu.clarkson.bruskajp.ee363.rpsls.player.MainPlayerSource;
 import edu.clarkson.bruskajp.ee363.rpsls.player.Player;
-import edu.clarkson.bruskajp.ee363.rpsls.player.PlayerPublisherDecorator;
+import edu.clarkson.bruskajp.ee363.rpsls.player.PlayerPublisherSourceDecorator;
+import edu.clarkson.bruskajp.ee363.rpsls.player.PlayerSource;
 import edu.clarkson.bruskajp.ee363.rpsls.scoring.Scoring;
 
 public class Main {
 
+	
+	/**
+	   * Starts the program and controls how the rest of the
+	   * program is linked together.
+	   * @param args A String array containing 
+	   * the arguments of the program.
+	*/ 
 	public static void main(String args[]) {
 		Scoring gestureScoring = new Scoring();
-		Gesture [] rightHandGestures = new Gesture[3];
-		Gesture [] leftHandGestures = new Gesture[3];		
+		//Gesture [] rightHandGestures = new Gesture[3];
+		//Gesture [] leftHandGestures = new Gesture[3];		
 		
-		//ComputerPlayer computer1 = new ComputerPlayer();
-		//ComputerPlayer computer2 = new ComputerPlayer();
+		Player [] players = new Player[2];
+		ComputerPlayer computer1 = new ComputerPlayer();
+		ComputerPlayer computer2 = new ComputerPlayer();
+		players[0] = computer1;
+		players[1] = computer2;
+		int[] winningPlayers = gestureScoring.selectWinner(players);
+		HashSet<Player> winningPlayersSet = new HashSet<>();
+		for(int index = 0; index < winningPlayers.length; ++index){
+			Player tempPlayer = players[index];
+			winningPlayersSet.add(tempPlayer);
+		}
 		
+		if (winningPlayersSet.isEmpty()) {
+			System.out.println("I'm empty");
+		}
 		
+		/* 
 		rightHandGestures[0] = new Spock();
 		leftHandGestures[0] = new Infested();
 		
@@ -40,29 +62,32 @@ public class Main {
 		TwoPlayerCombinations test = new TwoPlayerCombinations();
 		test.test();
 		
+		*/
+		
+		PlayerSource source = new MainPlayerSource(winningPlayersSet);
 		
 		
-		
-		PlayerPublisherDecorator playerPublisher = new PlayerPublisherDecorator();
+		PlayerPublisherSourceDecorator playerSourcePublisher = new PlayerPublisherSourceDecorator(source);
 		
 		Displayer<Player> winnerDisplay = new CommandLineDisplayer<>();
-		Displayer<String> tieDisplay = new CommandLineDisplayer<>();
 		
-		playerPublisher.register(new PlayerSubscriberDecorator(winnerDisplay));
-		/* 
-		 * 
-		Set<Player> winningPlayersSet = new HashSet<>();
-		playerPublisher.register((Player player) -> {
-			if(winningPlayersSet.add(player)){
+		playerSourcePublisher.register(new PlayerSubscriberDisplayerDecorator(winnerDisplay));
+		 
+		 
+		HashSet<Player> winningPlayersSet2 = new HashSet<>();
+		playerSourcePublisher.register((Player player) -> {
+			if(winningPlayersSet2.add(player)){
 				winnerDisplay.display(player);
 			}
 		});
 		
-		*/
+		while(playerSourcePublisher.getNextPlayer() != null){
+			
+		}
 		
 		//Player [] players = (Player[]) winningPlayersSet.toArray();
 		
-		
+		/*
 		int[] firstWinners = gestureScoring.selectPartialWinner(rightHandGestures);
 		
 		
@@ -94,7 +119,7 @@ public class Main {
 		} else {
 			System.out.println("It is a tie");
 		}
-			
+		*/	
 	}
 	
 }

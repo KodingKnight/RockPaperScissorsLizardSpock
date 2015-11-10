@@ -12,6 +12,9 @@ public class ComputerPlayer extends Player {
 	
 	Random randomNumberGenerator;
 
+	/**
+	   * Constructs the computerPlayer and sets its gestures.
+	*/ 
 	public ComputerPlayer() {
 		randomNumberGenerator = new Random();
 		int randomNumberRight = randomNumberGenerator.nextInt(5);
@@ -21,7 +24,7 @@ public class ComputerPlayer extends Player {
 		this.leftHandGesture = (LeftHandGesture) getInstanceOf("edu.clarkson.bruskajp.ee363.rpsls.gestures.lefthandgestures." + leftHandGestures[randomNumberLeft]);
 	}
 
-	public static Object getInstanceOf(String classNameString) {
+	private static Object getInstanceOf(String classNameString) {
 		try {
 			Class<?> className = Class.forName(classNameString);
 			Object object = className.newInstance();

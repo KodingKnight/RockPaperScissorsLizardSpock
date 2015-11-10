@@ -1,14 +1,18 @@
 package edu.clarkson.bruskajp.ee363.rpsls.scoring;
 
 import edu.clarkson.bruskajp.ee363.rpsls.gestures.Gesture;
-import edu.clarkson.bruskajp.ee363.rpsls.gestures.LeftHandGesture;
-import edu.clarkson.bruskajp.ee363.rpsls.gestures.RightHandGesture;
 import edu.clarkson.bruskajp.ee363.rpsls.player.Player;
 
 public class Scoring {
 	
+	
+	/**
+	   * Selects the winning Gesture from an array of gestures. 
+	   * @param objectArray A Gesture array containing 
+	   * the gestures to be compared.
+	   * @return An array containing the indexes of the winning gestures.
+	*/ 
 	public int[] selectPartialWinner(Gesture [] objectArray) {
-		
 		int numberOfWinningObjects = objectArray.length;
 		boolean [] objectArrayLosingObjects = new boolean[objectArray.length];
 		
@@ -24,8 +28,6 @@ public class Scoring {
 				continue;
 			}
 		}
-		
-		// else if only returns the first winning thing
 		
 		if(numberOfWinningObjects == 0) {
 			return null;
@@ -47,8 +49,13 @@ public class Scoring {
 		return null;
 	}
 	
+	/**
+	   * Selects the winning Player from an array of players. 
+	   * @param objectArray A Player array containing 
+	   * the players to be compared.
+	   * @return An array containing the indexes of the winning players.
+	*/ 
 	public int[] selectWinner(Player [] players) {
-		
 		Gesture[] rightHandGestures = new Gesture[players.length];
 		for(int index = 0; index < players.length; ++index) {
 			rightHandGestures[index] = players[index].getRightHandGesture();

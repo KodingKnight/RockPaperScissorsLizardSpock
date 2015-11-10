@@ -1,8 +1,6 @@
 package edu.clarkson.bruskajp.ee363.rpsls.jUnitTests;
 
 import edu.clarkson.bruskajp.ee363.rpsls.gestures.Gesture;
-import edu.clarkson.bruskajp.ee363.rpsls.gestures.LeftHandGesture;
-import edu.clarkson.bruskajp.ee363.rpsls.gestures.RightHandGesture;
 import edu.clarkson.bruskajp.ee363.rpsls.gestures.lefthandgestures.*;
 import edu.clarkson.bruskajp.ee363.rpsls.gestures.righthandgestures.*;
 import edu.clarkson.bruskajp.ee363.rpsls.scoring.Scoring;
@@ -16,7 +14,10 @@ public class TwoPlayerCombinations {
 	int[] firstWinners;
 	int[] secondWinners;
 	
-	
+	/**
+	   * Tests all of the two player conbinations with distinct results
+	   * @return A boolean describing if the program worked correctly.
+	*/ 
 	public boolean test(){		
 		
 		rightHandGestures[0] = new Rock();
