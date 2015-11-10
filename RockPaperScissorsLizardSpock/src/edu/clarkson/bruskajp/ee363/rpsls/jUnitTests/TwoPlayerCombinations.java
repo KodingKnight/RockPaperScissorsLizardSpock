@@ -4,6 +4,8 @@ import edu.clarkson.bruskajp.ee363.rpsls.gestures.Gesture;
 import edu.clarkson.bruskajp.ee363.rpsls.gestures.lefthandgestures.*;
 import edu.clarkson.bruskajp.ee363.rpsls.gestures.righthandgestures.*;
 import edu.clarkson.bruskajp.ee363.rpsls.scoring.Scoring;
+import static org.junit.Assert.*;
+import org.junit.Test;
 
 public class TwoPlayerCombinations {
 		
@@ -18,93 +20,93 @@ public class TwoPlayerCombinations {
 	   * Tests all of the two player conbinations with distinct results
 	   * @return A boolean describing if the program worked correctly.
 	*/ 
-	public boolean test(){		
+	@Test
+	public void test(){		
 		
 		rightHandGestures[0] = new Rock();
 			
 			rightHandGestures[1] = new Paper();
-			if(compare() != 1){ return false; }
+			if(compare() != 1){ fail("Invalid Result"); }
 			
 			rightHandGestures[1] = new Scissors();
-			if(compare() != 0){ return false; }
+			if(compare() != 0){ fail("Invalid Result"); }
 			
 			rightHandGestures[1] = new Lizzard();
-			if(compare() != 0){ return false; }
+			if(compare() != 0){ fail("Invalid Result"); }
 			
 			rightHandGestures[1] = new Spock();
-			if(compare() != 1){ return false; }
+			if(compare() != 1){ fail("Invalid Result"); }
 			
 		rightHandGestures[0] = new Paper();
 			
 			rightHandGestures[1] = new Scissors();
-			if(compare() != 1){ return false; }
+			if(compare() != 1){ fail("Invalid Result"); }
 			
 			rightHandGestures[1] = new Lizzard();
-			if(compare() != 1){ return false; }
+			if(compare() != 1){ fail("Invalid Result"); }
 			
 			rightHandGestures[1] = new Spock();
-			if(compare() != 0){ return false; }
+			if(compare() != 0){ fail("Invalid Result"); }
 			
 		rightHandGestures[0] = new Scissors();
 		
 			rightHandGestures[1] = new Lizzard();
-			if(compare() != 0){ return false; }
+			if(compare() != 0){ fail("Invalid Result"); }
 			
 			rightHandGestures[1] = new Spock();
-			if(compare() != 1){ return false; }
+			if(compare() != 1){ fail("Invalid Result"); }
 			
 		rightHandGestures[0] = new Lizzard();
 		
 			rightHandGestures[1] = new Spock();
-			if(compare() != 0){ return false; }
+			if(compare() != 0){ fail("Invalid Result"); }
 			
 		rightHandGestures[0] = new Rock();
 		rightHandGestures[1] = new Rock();
 		leftHandGestures[0] = new Radioactive();
 		leftHandGestures[1] = new Poisonous();
 			
-			if(compare() != 0){ return false; }
+			if(compare() != 0){ fail("Invalid Result"); }
 			
 			leftHandGestures[1] = new Infested();
-			if(compare() != 1){ return false; }
+			if(compare() != 1){ fail("Invalid Result"); }
 			
 		leftHandGestures[0] = new Poisonous();
 			
-			if(compare() != 0){ return false; }
+			if(compare() != 0){ fail("Invalid Result"); }
 			
 		rightHandGestures[0] = new Rock();
 		rightHandGestures[1] = new Rock();
 		leftHandGestures[0] = new Radioactive();
 		leftHandGestures[1] = new Radioactive();
 		
-			if(compare() != 2){ return false; }
+			if(compare() != 2){ fail("Invalid Result"); }
 		
 		rightHandGestures[0] = new Paper();
 		rightHandGestures[1] = new Paper();
 		leftHandGestures[0] = new Poisonous();
 		leftHandGestures[1] = new Poisonous();
 		
-			if(compare() != 2){ return false; }
+			if(compare() != 2){ fail("Invalid Result"); }
 		
 		rightHandGestures[0] = new Scissors();
 		rightHandGestures[1] = new Scissors();
 		leftHandGestures[0] = new Infested();
 		leftHandGestures[1] = new Infested();
 		
-			if(compare() != 2){ return false; }
+			if(compare() != 2){ fail("Invalid Result"); }
 		
 		rightHandGestures[0] = new Lizzard();
 		rightHandGestures[1] = new Lizzard();
 		
-			if(compare() != 2){ return false; }
+			if(compare() != 2){ fail("Invalid Result"); }
 		
 		rightHandGestures[0] = new Spock();
 		rightHandGestures[1] = new Spock();
 
-			if(compare() != 2){ return false; }
+			if(compare() != 2){ fail("Invalid Result"); }
 			
-		System.out.println("It is correct");
-		return true;
+		//System.out.println("It is correct");
 	}
 	
 	private int compare(){
