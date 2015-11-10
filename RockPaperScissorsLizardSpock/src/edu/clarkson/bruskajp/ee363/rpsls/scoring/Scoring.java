@@ -5,6 +5,12 @@ import edu.clarkson.bruskajp.ee363.rpsls.player.Player;
 
 public class Scoring {
 	
+	/**
+	   * When the game has 2 players the result can either be a single winner or a tie.
+	   * 
+	   * When the game has more than 2 players then there can be a single winner, 
+	   * a tie between multiple players, or no winners (all of the moves cancel).
+	 */
 	
 	/**
 	   * Selects the winning Gesture from an array of gestures. 
@@ -62,7 +68,9 @@ public class Scoring {
 		}
 		
 		int[] firstWinners = this.selectPartialWinner(rightHandGestures);
-		if(firstWinners.length <= 1) {
+		if(firstWinners == null){
+			return null;
+		} else if(firstWinners.length == 1) {
 			return firstWinners;
 		} else {
 			Gesture [] leftHandGestures = new Gesture[firstWinners.length];
@@ -72,8 +80,17 @@ public class Scoring {
 			}
 			
 			int[] secondWinners = this.selectPartialWinner(leftHandGestures);
-		
-			return secondWinners;
+			
+			int[] finalWinners = null;
+			
+			if(secondWinners != null){
+				finalWinners = new int[secondWinners.length];
+				for(int index = 0; index < secondWinners.length; ++index){
+					finalWinners[index] = firstWinners[secondWinners[index]];
+				}
+			}
+			
+			return finalWinners;
 		}
 		
 	}

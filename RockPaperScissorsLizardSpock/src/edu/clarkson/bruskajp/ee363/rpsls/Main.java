@@ -35,20 +35,29 @@ public class Main {
 	public static void main(String args[]) {
 		Scoring gestureScoring = new Scoring();	
 		
-		Player [] players = new Player[2];
+		Player [] players = new Player[4];
 		ComputerPlayer computer1 = new ComputerPlayer();
 		ComputerPlayer computer2 = new ComputerPlayer();
+		ComputerPlayer computer3 = new ComputerPlayer();
+		ComputerPlayer computer4 = new ComputerPlayer();
 		players[0] = computer1;
 		players[1] = computer2;
+		players[2] = computer3;
+		players[3] = computer4;
+		
+		System.out.println(players[0]);
+		System.out.println(players[1]);
+		System.out.println(players[2]);
+		System.out.println(players[3]);
+		System.out.println('\n');
+		
 		int[] winningPlayers = gestureScoring.selectWinner(players);
 		HashSet<Player> winningPlayersSet = new HashSet<>();
-		for(int index = 0; index < winningPlayers.length; ++index){
-			Player tempPlayer = players[index];
-			winningPlayersSet.add(tempPlayer);
-		}
-		
-		if (winningPlayersSet.isEmpty()) {
-			System.out.println("I'm empty");
+		if(winningPlayers != null){
+			for(int index = 0; index < winningPlayers.length; ++index){
+				Player tempPlayer = players[winningPlayers[index]];
+				winningPlayersSet.add(tempPlayer);
+			}
 		}
 		
 		PlayerSource source = new MainPlayerSource(winningPlayersSet);

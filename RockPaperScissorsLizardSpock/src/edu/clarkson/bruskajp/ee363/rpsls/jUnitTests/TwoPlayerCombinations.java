@@ -17,8 +17,7 @@ public class TwoPlayerCombinations {
 	int[] secondWinners;
 	
 	/**
-	   * Tests all of the two player conbinations with distinct results
-	   * @return A boolean describing if the program worked correctly.
+	   * Tests all of the two player combinations with distinct results
 	*/ 
 	@Test
 	public void test(){		
