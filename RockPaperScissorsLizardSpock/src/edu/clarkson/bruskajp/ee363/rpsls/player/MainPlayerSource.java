@@ -19,8 +19,12 @@ public class MainPlayerSource implements PlayerSource{
 	*/ 
 	@Override
 	public Player getNextPlayer() {
-		Player player = (Player) iterator.next();
-		return player;
+		
+		if(iterator.hasNext()){
+			Player player = (Player) iterator.next();
+			return player;
+		}
+		return null;
 	}
 
 }

@@ -68,7 +68,7 @@ public class Scoring {
 			Gesture [] leftHandGestures = new Gesture[firstWinners.length];
 			
 			for(int index = 0; index < firstWinners.length; ++index) {
-				leftHandGestures[index] = leftHandGestures[firstWinners[index]];
+				leftHandGestures[index] = players[firstWinners[index]].getLeftHandGesture();
 			}
 			
 			int[] secondWinners = this.selectPartialWinner(leftHandGestures);

@@ -33,9 +33,7 @@ public class Main {
 	   * the arguments of the program.
 	*/ 
 	public static void main(String args[]) {
-		Scoring gestureScoring = new Scoring();
-		//Gesture [] rightHandGestures = new Gesture[3];
-		//Gesture [] leftHandGestures = new Gesture[3];		
+		Scoring gestureScoring = new Scoring();	
 		
 		Player [] players = new Player[2];
 		ComputerPlayer computer1 = new ComputerPlayer();
@@ -53,22 +51,6 @@ public class Main {
 			System.out.println("I'm empty");
 		}
 		
-		/* 
-		rightHandGestures[0] = new Spock();
-		leftHandGestures[0] = new Infested();
-		
-		rightHandGestures[1] = new Spock();
-		leftHandGestures[1] = new Poisonous();
-		
-		rightHandGestures[2] = new Rock();
-		leftHandGestures[2] = new Radioactive();
-		
-		
-		TwoPlayerCombinations test = new TwoPlayerCombinations();
-		test.test();
-		
-		*/
-		
 		PlayerSource source = new MainPlayerSource(winningPlayersSet);
 		
 		
@@ -78,53 +60,13 @@ public class Main {
 		
 		playerSourcePublisher.register(new PlayerSubscriberDisplayerDecorator(winnerDisplay));
 		 
-		 
-		HashSet<Player> winningPlayersSet2 = new HashSet<>();
 		playerSourcePublisher.register((Player player) -> {
-			if(winningPlayersSet2.add(player)){
+			if(winningPlayersSet.add(player)){
 				winnerDisplay.display(player);
 			}
 		});
 		
-		while(playerSourcePublisher.getNextPlayer() != null){
-			
-		}
-		
-		//Player [] players = (Player[]) winningPlayersSet.toArray();
-		
-		/*
-		int[] firstWinners = gestureScoring.selectPartialWinner(rightHandGestures);
-		
-		
-		//if(winners.length == 0){
-		//	winnerDisplay.display();
-		//}
-		
-		int[] secondWinners = null;
-		if(firstWinners.length == 0) {
-			System.out.println("It is a deadlock!");
-			return;
-		} else if(firstWinners.length == 1) {
-			System.out.println(rightHandGestures[firstWinners[0]].getGestureType() + " at position " + firstWinners[0] + " wins");
-			return;
-		} else {
-			Gesture [] newLeftHandGestures = new Gesture[firstWinners.length];
-			
-			for(int index = 0; index < firstWinners.length; ++index) {
-				newLeftHandGestures[index] = leftHandGestures[firstWinners[index]];
-			}
-			
-			secondWinners = gestureScoring.selectPartialWinner(newLeftHandGestures);
-		}
-		
-		if(secondWinners.length == 0) {
-			System.out.println("It is a deadlock!");
-		} else if(secondWinners.length == 1) {
-			System.out.println(rightHandGestures[secondWinners[0]].getGestureType() + " at position " + secondWinners[0] + " wins");
-		} else {
-			System.out.println("It is a tie");
-		}
-		*/	
+		while(playerSourcePublisher.getNextPlayer() != null){}
 	}
 	
 }
