@@ -14,6 +14,7 @@ import edu.clarkson.bruskajp.ee363.rpsls.player.MainPlayerSource;
 import edu.clarkson.bruskajp.ee363.rpsls.player.Player;
 import edu.clarkson.bruskajp.ee363.rpsls.player.PlayerPublisherSourceDecorator;
 import edu.clarkson.bruskajp.ee363.rpsls.player.PlayerSource;
+import edu.clarkson.bruskajp.ee363.rpsls.scoring.RightPriorityScoring;
 import edu.clarkson.bruskajp.ee363.rpsls.scoring.Scoring;
 
 public class RandomTester {
@@ -26,7 +27,7 @@ public class RandomTester {
 	public void test() {
 		
 		for(int counter = 0; counter < 1000; ++counter){
-			Scoring gestureScoring = new Scoring();	
+			Scoring gestureScoring = new RightPriorityScoring();	
 			
 			Player [] players = new Player[2];
 			Player player1 = new ComputerPlayer();

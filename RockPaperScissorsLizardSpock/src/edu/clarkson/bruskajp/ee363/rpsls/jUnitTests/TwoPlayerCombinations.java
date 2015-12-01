@@ -3,13 +3,14 @@ package edu.clarkson.bruskajp.ee363.rpsls.jUnitTests;
 import edu.clarkson.bruskajp.ee363.rpsls.gestures.Gesture;
 import edu.clarkson.bruskajp.ee363.rpsls.gestures.lefthandgestures.*;
 import edu.clarkson.bruskajp.ee363.rpsls.gestures.righthandgestures.*;
+import edu.clarkson.bruskajp.ee363.rpsls.scoring.RightPriorityScoring;
 import edu.clarkson.bruskajp.ee363.rpsls.scoring.Scoring;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class TwoPlayerCombinations {
 		
-	Scoring gestureScoring = new Scoring();
+	Scoring gestureScoring = new RightPriorityScoring();
 	Gesture [] rightHandGestures = new Gesture[2];
 	Gesture [] leftHandGestures = new Gesture[2];
 	

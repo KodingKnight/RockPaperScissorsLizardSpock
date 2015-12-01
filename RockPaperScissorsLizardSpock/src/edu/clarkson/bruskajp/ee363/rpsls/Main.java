@@ -16,6 +16,8 @@ import edu.clarkson.bruskajp.ee363.rpsls.player.MainPlayerSource;
 import edu.clarkson.bruskajp.ee363.rpsls.player.Player;
 import edu.clarkson.bruskajp.ee363.rpsls.player.PlayerPublisherSourceDecorator;
 import edu.clarkson.bruskajp.ee363.rpsls.player.PlayerSource;
+import edu.clarkson.bruskajp.ee363.rpsls.scoring.LeftPriorityScoring;
+import edu.clarkson.bruskajp.ee363.rpsls.scoring.RightPriorityScoring;
 import edu.clarkson.bruskajp.ee363.rpsls.scoring.Scoring;
 
 public class Main {
@@ -33,10 +35,10 @@ public class Main {
 	   * the arguments of the program.
 	*/ 
 	public static void main(String args[]) {
-		Scoring gestureScoring = new Scoring();	
+		Scoring gestureScoring = new RightPriorityScoring();	
 		
-		Player [] players = new Player[4];
-		ComputerPlayer computer1 = new ComputerPlayer();
+		Player [] players = new Player[3];
+		/*ComputerPlayer computer1 = new ComputerPlayer();
 		ComputerPlayer computer2 = new ComputerPlayer();
 		ComputerPlayer computer3 = new ComputerPlayer();
 		ComputerPlayer computer4 = new ComputerPlayer();
@@ -44,6 +46,12 @@ public class Main {
 		players[1] = computer2;
 		players[2] = computer3;
 		players[3] = computer4;
+		*/
+		
+		
+		players[0] = new HumanPlayer();
+		players[1] = new HumanPlayer();
+		players[2] = new HumanPlayer();
 		
 		int[] winningPlayers = gestureScoring.selectWinner(players);
 		HashSet<Player> winningPlayersSet = new HashSet<>();
@@ -70,6 +78,7 @@ public class Main {
 		});
 		
 		while(playerSourcePublisher.getNextPlayer() != null){}
+		
 	}
 	
 }

@@ -12,11 +12,12 @@ import edu.clarkson.bruskajp.ee363.rpsls.display.PlayerSubscriberDisplayerDecora
 import edu.clarkson.bruskajp.ee363.rpsls.gestures.lefthandgestures.*;
 import edu.clarkson.bruskajp.ee363.rpsls.gestures.righthandgestures.*;
 import edu.clarkson.bruskajp.ee363.rpsls.player.ComputerPlayer;
-import edu.clarkson.bruskajp.ee363.rpsls.player.HumanPlayer;
+import edu.clarkson.bruskajp.ee363.rpsls.player.TestPlayer;
 import edu.clarkson.bruskajp.ee363.rpsls.player.MainPlayerSource;
 import edu.clarkson.bruskajp.ee363.rpsls.player.Player;
 import edu.clarkson.bruskajp.ee363.rpsls.player.PlayerPublisherSourceDecorator;
 import edu.clarkson.bruskajp.ee363.rpsls.player.PlayerSource;
+import edu.clarkson.bruskajp.ee363.rpsls.scoring.RightPriorityScoring;
 import edu.clarkson.bruskajp.ee363.rpsls.scoring.Scoring;
 
 public class MultiplePlayers {
@@ -24,12 +25,12 @@ public class MultiplePlayers {
 	@Test
 	public void test() {
 		
-		Scoring gestureScoring = new Scoring();	
+		Scoring gestureScoring = new RightPriorityScoring();	
 		
 		Player [] players = new Player[3];
-		Player player1 = new HumanPlayer(new Spock(), new Infested());
-		Player player2 = new HumanPlayer(new Spock(), new Infested());
-		Player player3 = new HumanPlayer(new Spock(), new Infested());
+		Player player1 = new TestPlayer(new Spock(), new Infested());
+		Player player2 = new TestPlayer(new Spock(), new Infested());
+		Player player3 = new TestPlayer(new Spock(), new Infested());
 		
 		players[0] = player1;
 		players[1] = player2;
@@ -48,15 +49,15 @@ public class MultiplePlayers {
 		winningPlayers = gestureScoring.selectWinner(players);
 		if(winningPlayers != null){ fail("Invalid Result"); }
 		
-		players[0] = new HumanPlayer(new Lizzard(), new Radioactive());
-		players[1] = new HumanPlayer(new Lizzard(), new Infested());
-		players[2] = new HumanPlayer(new Paper(), new Poisonous());
+		players[0] = new TestPlayer(new Lizzard(), new Radioactive());
+		players[1] = new TestPlayer(new Lizzard(), new Infested());
+		players[2] = new TestPlayer(new Paper(), new Poisonous());
 		winningPlayers = gestureScoring.selectWinner(players);
 		if(winningPlayers.length != 1){ fail("Invalid Result"); }
 		
-		players[0] = new HumanPlayer(new Lizzard(), new Radioactive());
-		players[1] = new HumanPlayer(new Lizzard(), new Radioactive());
-		players[2] = new HumanPlayer(new Paper(), new Poisonous());
+		players[0] = new TestPlayer(new Lizzard(), new Radioactive());
+		players[1] = new TestPlayer(new Lizzard(), new Radioactive());
+		players[2] = new TestPlayer(new Paper(), new Poisonous());
 		winningPlayers = gestureScoring.selectWinner(players);
 		if(winningPlayers.length != 2){ fail("Invalid Result"); }
 		
